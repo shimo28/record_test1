@@ -1,0 +1,17 @@
+<% if @time.present? %>
+  <%= form_with module:@test, url: tweet_path(id:@test.id) do |f| %>
+    <%= f.text_field :year_record,value:Time.now.year %>
+    <%= f.text_field :month_record,value:Time.now.month %>
+    <%= f.text_field :day_record,value:Time.now.day %>
+    <%= f.text_field :time_record,value:@time.time_record+1 %>
+    <%= f.submit "保存"  %>
+  <% end %>
+<% else %>
+  <%= form_with module:@test, url: tweets_path do |f| %>
+    <%= f.text_field :year_record,value:Time.now.year %>
+    <%= f.text_field :month_record,value:Time.now.month %>
+    <%= f.text_field :day_record,value:Time.now.day %>
+    <%= f.text_field :time_record,value:1 %>
+    <%= f.submit "保存"  %>
+  <% end %>
+<% end %>
